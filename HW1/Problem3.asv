@@ -1,0 +1,45 @@
+clc; clear; close all;
+
+%time as a variable
+syms t;
+
+%Gravitational constant
+syms g;
+g=9.81;
+
+%masses (m1 is unused, but placed for future potential use in different
+%configurations)
+syms m1 m2 m3;
+
+%Dimensional constants
+syms a1 a2 a3;
+syms l1 l2 l3
+l1 = a1/2
+l2 = a2/2
+l3 = a3/3
+
+%Joint variables. Rotational displacement in radians
+syms q1(t) q2(t) q3(t);
+
+%Position and velocity vectors of center of masses of links
+position_1 = [l1*sin(q1);l1*cos(q1)]
+position_2 = [a1*sin(q1)+l2*sin(q1+q2);a1*cos(q1)+l2*cos(q1+q2)]
+position_3 = [a1*sin(q1)+a2*sin(q1+q2)+l3*sin(q1+q2-q3);
+              a1*cos(q1)+a2*cos(q1+q2)+l3*cos(q1+q2-q3)]
+
+position_t = [position_1;position_2;position_3]
+velocity_t = diff(position_t,t)
+
+vsquared = transpose(velocity_t)*velocity_t
+vsymbolic = vsquared(t)
+
+%Kinetic energy contributed from each joint is equal to the linear velocity
+%of the center of mass, plus the rotational inertia of the link with its 
+%total angular velocity from the joint and all prior joints
+
+Ke1 = 0.5*
+
+
+
+
+
